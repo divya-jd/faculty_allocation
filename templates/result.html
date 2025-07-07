@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allocation Result</title>
+    <style>
+        body { font-family: sans-serif; background: #eef2f3; padding: 40px; text-align: center; }
+        table { margin: 0 auto; border-collapse: collapse; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        th, td { padding: 12px 20px; border: 1px solid #ccc; }
+        th { background: #0077cc; color: white; }
+        h1 { color: #333; }
+        .summary { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>📊 Final Allocation Result</h1>
+    <table>
+        <tr><th>Subject</th><th>Assigned Faculty</th></tr>
+        {% for subject, faculty in assignment.items() %}
+        <tr><td>{{ subject }}</td><td>{{ faculty }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <div class="summary">
+        <h2>⚠️ Conflict Count: {{ conflict_count }}</h2>
+        <h3>📦 Faculty Subject Load:</h3>
+        <table>
+            <tr><th>Faculty</th><th>No. of Subjects</th></tr>
+            {% for faculty, load in faculty_load.items() %}
+            <tr><td>{{ faculty }}</td><td>{{ load }}</td></tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h4>Note: Time clash conflicts occur if a faculty is assigned two subjects scheduled at overlapping times (e.g., OS and SE both on Wed 9–10 AM).</h4>
+    </div>
+</body>
+</html>

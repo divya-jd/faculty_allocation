@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty Preference Input</title>
+    <style>
+        body { font-family: sans-serif; background: #f9f9f9; padding: 40px; text-align: center; }
+        table { margin: 0 auto; background: white; padding: 20px; border-radius: 10px; }
+        select, input[type="submit"] { padding: 8px; font-size: 16px; }
+        th, td { padding: 10px 20px; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>CSP-FacAlloc: Faculty Preferences</h1>
+    <form method="POST">
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Preferred Faculty</th>
+            </tr>
+            {% for subject in subjects %}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>
+                    <select name="{{ subject }}">
+                        <option value="">-- Select Faculty --</option>
+                        {% for faculty in faculties %}
+                        <option value="{{ faculty }}">{{ faculty }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <input type="submit" value="Allocate Subjects">
+    </form>
+</body>
+</html>
